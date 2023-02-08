@@ -1,12 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
-interface IBook {
-  name: string;
-  author: string;
-  image: string;
-  price: number;
-}
+import { Book, BookService } from '../services/book.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-books',
@@ -15,13 +10,18 @@ interface IBook {
 })
 export class BooksComponent {
   isShow: boolean = true;
-  books$: Observable<any>;
+  books$: Observable<Book[]>;
   cart: any[] = [];
-  constructor(private http: HttpClient) {
-    this.books$ = this.http.get('./assets/books.json');
+
+  constructor(
+    private _bookService: BookService,
+    private _cartService: CartService
+  ) {
+    this.books$ = _bookService.getBooks();
+    this._cartService.getCart().subscribe((cart) => console.log(cart));
   }
 
-  addToCart(book: any) {
-    console.log(book);
+  addToCart(book: Book) {
+    this._cartService.addToCart(book);
   }
 }
