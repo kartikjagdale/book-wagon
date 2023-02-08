@@ -1,0 +1,11 @@
+.carousel-item {
+    height: 40vh;
+  }
+
+.site-heading {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 50px;      
+}
