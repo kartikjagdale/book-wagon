@@ -1,0 +1,20 @@
+.container {
+  max-width: 960px;
+  max-width: 960px;
+  margin: 0 auto 2em;
+  text-align: center;
+}
+
+.empty-cart-sub-heading {
+  display: block;
+  font-size: 16px;
+  font-family: arial;
+}
+.product-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  text-align: left;
+}

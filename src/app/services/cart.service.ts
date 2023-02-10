@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Book } from './book.service';
 
-interface CartItem {
+export interface CartItem {
   id?: number;
   quantity: number;
   book: Book;
@@ -17,7 +17,7 @@ export class CartService {
 
   constructor() {}
 
-  getCart() {
+  getCart(): Observable<CartItem[]> {
     return this.cartSubject.asObservable();
   }
 

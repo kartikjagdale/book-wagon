@@ -12,6 +12,7 @@ export interface Book {
   pages: number;
   title: string;
   year: number;
+  price: number;
 }
 
 @Injectable({
@@ -24,9 +25,13 @@ export class BookService {
     return this.http.get<Book[]>('./assets/books.json').pipe(
       map((books: Book[]) => {
         return books.map((book: Book, index: number) => {
-          return { ...book, id: index };
+          return { ...book, id: index, price: this.getRandomPrice() };
         });
       })
     );
+  }
+
+  private getRandomPrice() {
+    return Math.floor(Math.random() * (20 - 5 + 1) + 5);
   }
 }
