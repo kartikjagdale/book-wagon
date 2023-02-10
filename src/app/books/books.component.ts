@@ -24,4 +24,8 @@ export class BooksComponent {
   addToCart(book: Book) {
     this._cartService.addToCart(book);
   }
+
+  removeFromCart(book: Book) {
+    this._cartService.removeFromCart(book?.id);
+  }
 }

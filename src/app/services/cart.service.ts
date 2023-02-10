@@ -32,7 +32,7 @@ export class CartService {
     this.cartSubject.next(this.cart);
   }
 
-  removeFromCart(itemId: number) {
+  removeFromCart(itemId: number | undefined) {
     this.cart = this.cart.filter((i) => i.id !== itemId);
     this.cartSubject.next(this.cart);
   }
@@ -40,5 +40,9 @@ export class CartService {
   clearCart() {
     this.cart = [];
     this.cartSubject.next(this.cart);
+  }
+
+  isBookIncart(bookId: number | undefined): boolean {
+    return this.cart.findIndex((i) => i.id === bookId) === -1 ? false : true;
   }
 }
